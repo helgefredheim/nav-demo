@@ -48,12 +48,12 @@ var snippetsArray = require("./snippets");
 	app.config(function($routeProvider) {
 		$routeProvider
 			.when('/snippet/:templateName', {
-				templateUrl: 'preview.html',
+				templateUrl: 'preview-template.html',
 				controller: 'TemplateController'
 			})
 			.otherwise({
 				controller: 'IndexController',
-				templateUrl: 'preview.html',
+				templateUrl: 'preview-template.html',
 			});
 	});
 
