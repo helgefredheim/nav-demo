@@ -23,6 +23,6 @@
     "watch:client": "parallelshell \"npm run watch:client:css\" \"npm run watch:client:scripts\"",
     "watch:client:css": "nodemon -q -w nav-styles/ --ext 'less' --exec 'npm run build:client:styles'",
     "watch:client:scripts": "watchify app/scripts/*.js -o public/scripts/nav-demo.js -v",
-    "test": "csslint public "
+    "test": "csslint public/styles/nav_extra.css"
   }
 }
