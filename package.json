@@ -1,0 +1,28 @@
+{
+  "name": "nav-design",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "^1.4.1",
+    "angular-route": "^1.4.1",
+    "express": "^4.13.0"
+  },
+  "devDependencies": {
+    "browserify": "^10.2.4",
+    "csslint": "^0.10.0",
+    "less": "^2.4.0",
+    "livereload": "^0.3.7",
+    "watchify": "^3.2.3"
+  },
+  "scripts": {
+    "build": "npm install && npm run test && npm run build:client:scripts && npm run build:client:styles",
+    "build:client:styles": "lessc nav-styles/nav_extra.less > public/styles/nav_extra.css",
+    "build:client:scripts": "browserify app/scripts/*.js -o public/scripts/nav-demo.js -v",
+    "watch": "parallelshell \"npm run watch:server\" \"npm run watch:server:snippets\" \"npm run watch:client\"",
+    "watch:server": "parallelshell \"nodemon -w index.js\" \"npm run watch:server:snippets\"",
+    "watch:server:snippets": "nodemon -q -w app/snippets/ --ext 'html' --exec 'cp -R app/snippets public'",
+    "watch:client": "parallelshell \"npm run watch:client:css\" \"npm run watch:client:scripts\"",
+    "watch:client:css": "nodemon -q -w nav-styles/ --ext 'less' --exec 'npm run build:client:styles'",
+    "watch:client:scripts": "watchify app/scripts/*.js -o public/scripts/nav-demo.js -v",
+    "test": "csslint public "
+  }
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<title>Demo av designelementer hos NAV</title>
+	<link rel="stylesheet" href="styles/nav_extra.css" />
+</head>
+
+<body ng-app="NavDesignApp">
+    <div ng-view></div> 
+</body>
+
+<script type="text/javascript" src="scripts/nav-demo.js"></script>
+
+<script type="text/ng-template" id="preview-template.html">
+
+	<div class="demo-header panel" ng-controller="HeaderController as HeaderCtrl">
+		<div class="select-container">
+			<select class="input-select input--l" ng-model="currentPage" ng-change="displaySnippet(currentPage)">
+				<option ng-repeat="snippet in snippets">{{snippet}}</option>
+			</select>
+		</div>
+
+		<button class="btn btn-small" data-ng-click="toggleTextarea()">{{buttonText}}</button>
+	</div>
+
+	<div class="demo-content">
+		<div id="preview-pane" class="preview-pane" data-ng-bind-html="html | unsafe"></div>
+		<div ng-if="displayTextarea">
+			<textarea class="code-textarea" ng-model="html"></textarea>
+		</div>
+	</div>
+
+</script>
+
+<html>
